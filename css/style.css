@@ -1,0 +1,319 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("../assets/fonts/Roboto/Roboto-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+body {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+}
+
+h1, h2 {
+  margin: 0;
+}
+
+.title {
+  margin-bottom: 20px;
+  color: #C0C3C9;
+  font-size: 26px;
+}
+
+.form-title {
+  color: #F6F6F6;
+  margin-bottom: 10px;
+}
+
+.card {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 350px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #11151A;
+  border-radius: 10px;
+}
+.card footer {
+  z-index: 999;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 15px 20px;
+  width: 100%;
+  border-radius: 10px;
+  background-color: #2B3545;
+}
+.card footer button {
+  outline: none;
+  border: none;
+  color: #FFF;
+  font-size: 14px;
+  border-radius: 4px;
+  width: 100%;
+  height: 54px;
+  background-color: #8A98AD;
+  text-transform: uppercase;
+}
+
+.card-body {
+  padding: 20px;
+  text-transform: uppercase;
+}
+.card-body h1 {
+  text-align: center;
+  font-family: Impact, sans-serif;
+  font-size: 26px;
+  line-height: 45px;
+  letter-spacing: 0.8px;
+}
+.card-body h2 {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.checkmark {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  display: none;
+}
+
+.games {
+  margin-bottom: 20px;
+}
+
+.games-field {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.card-field {
+  border: none;
+  background-color: #354051;
+  width: 100%;
+  height: 56px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  padding: 16px 20px;
+}
+
+.games-select select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+.games-select:after {
+  content: url(../assets/images/selectmark-dark.svg);
+  padding: 0 8px;
+  font-size: 12px;
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  z-index: 1;
+  text-align: center;
+  pointer-events: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.currencies {
+  background-color: #2B3545;
+  border-radius: 4px;
+  color: #9BA1AB;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.currency-input {
+  color: #9BA1AB;
+  border: none;
+  font-weight: 700;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 24px;
+  height: 59px;
+  padding: 30px 72px 20px 49px;
+  width: 100%;
+  background-color: #354051;
+}
+
+#currency-from-input {
+  padding: 30px 72px 20px 20px;
+}
+
+#currency-slider {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -webkit-appearance: none;
+  margin: 18px 0;
+  width: calc(100% - 40px);
+  background: #2B3545;
+}
+#currency-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #4E5D74;
+  cursor: pointer;
+  margin-top: -5px;
+}
+#currency-slider:focus {
+  outline: none;
+}
+#currency-slider:focus::-webkit-slider-runnable-track {
+  background: #414D60;
+}
+#currency-slider::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+#currency-slider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  background: #414D60;
+  border-radius: 1.3px;
+}
+#currency-slider::-ms-fill-lower {
+  background: #414D60;
+  border-radius: 2.6px;
+}
+
+.currency-to-container {
+  position: relative;
+}
+.currency-to-container::before {
+  content: "Get:";
+  position: absolute;
+  font-size: 12px;
+  font-weight: 400;
+  top: 10px;
+  left: 20px;
+}
+.currency-to-container img {
+  position: absolute;
+  top: calc(50% + 5px);
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: 20px;
+}
+
+.currency-from-container {
+  position: relative;
+}
+.currency-from-container img {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+}
+.currency-from-container::before {
+  content: "Pay:";
+  position: absolute;
+  font-size: 12px;
+  font-weight: 400;
+  top: 10px;
+  left: 20px;
+}
+
+.information {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 10px;
+  padding: 15px 20px 0;
+  height: 224px;
+  width: 100%;
+  background-color: #2B3545;
+}
+.information h1 {
+  color: #FFF;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.info-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 5px;
+  -ms-flex-item-align: stretch;
+      -ms-grid-row-align: stretch;
+      align-self: stretch;
+}
+.info-input label {
+  color: #FFF;
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.close {
+  cursor: pointer;
+  position: absolute;
+  top: 24px;
+  right: 44px;
+}
+.close:before, .close:after {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background: #F6F6F6;
+}
+.close::before {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.close::after {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.dd-selected {
+  padding: 3px !important;
+}

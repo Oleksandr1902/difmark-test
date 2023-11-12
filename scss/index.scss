@@ -1,0 +1,272 @@
+@import "./vars";
+@import './fonts';
+body {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 400;
+}
+h1, h2 {
+	margin: 0;
+}
+.title {
+	margin-bottom: 20px;
+	color: $grey-1;
+	font-size: 26px;
+}
+.form-title {
+	color: $grey-2;
+	margin-bottom: 10px;
+}
+.card {
+	position: relative;
+	display: flex;
+	width: 350px;
+	
+	flex-direction: column;
+	background-color: $bg-dark;
+	border-radius: 10px;
+	footer {
+		z-index: 999;
+		display: flex;
+    align-items: center;
+		justify-content: center;
+		box-sizing: border-box;
+		padding: 15px 20px;
+		width: 100%;
+		border-radius: 10px;
+		background-color: $dark-2;
+		button {
+			outline: none;
+			border: none;
+			color: $white-1;
+			font-size: 14px;
+			border-radius: 4px;
+			width: 100%;
+			height: 54px;
+			background-color: $dark-3;
+			text-transform: uppercase;
+		}
+	}
+}
+.card-body {
+	padding: 20px;
+	text-transform: uppercase;
+
+	h1 {
+		text-align: center;
+		font-family: Impact, sans-serif;
+		font-size: 26px;
+		line-height: 45px;
+		letter-spacing: 0.8px;
+	}
+	h2 {
+		font-size: 16px;
+		line-height: 24px;
+		font-weight: 400;
+	}
+}
+.checkmark {
+	position: absolute;
+	right: 4px;
+	top: 50%;
+	transform: translateY(-50%);
+	display: none;
+}
+.games {
+	margin-bottom: 20px;
+}
+.games-field {
+	position: relative;
+	margin-bottom: 10px;
+}
+
+.card-field {
+	border: none;
+	background-color: $dark-1;
+	width: 100%;
+	height: 56px;
+	box-sizing: border-box;
+	font-family: Roboto;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 24px;
+	padding: 16px 20px;
+}
+
+.games-select {
+	select {
+		appearance: none;
+	}
+	&:after {
+		content: url(../assets/images/selectmark-dark.svg);
+		padding: 0 8px;
+		font-size: 12px;
+		position: absolute;
+		right: 8px;
+		top: 50%;
+    transform: translateY(-50%);
+		z-index: 1;
+		text-align: center;
+		pointer-events: none;
+		box-sizing: border-box;
+	}
+}
+
+.currencies {
+	background-color: $dark-2;
+	border-radius: 4px;
+	color: $grey-3;
+	display: flex;
+  flex-direction: column;
+}
+
+.currency-input {
+	color: $grey-3;
+	border: none;
+	font-weight: 700;
+	box-sizing: border-box;
+	font-size: 24px;
+	height: 59px;
+	padding: 30px 72px 20px 49px;
+	width: 100%;
+	background-color: $dark-1;
+	
+}
+
+#currency-from-input {
+	padding: 30px 72px 20px 20px;
+}
+
+#currency-slider {
+	align-self: center;
+	-webkit-appearance: none;
+  margin: 18px 0;
+  width: calc(100% - 40px);
+	background: $dark-2;
+	&::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		height: 16px;
+		width: 16px;
+		border-radius: 50%;
+		background: $dark-4;
+		cursor: pointer;
+		margin-top: -5px; 
+	}
+	&:focus {
+		outline: none;
+		&::-webkit-slider-runnable-track {
+			background: $dark-5;
+		}
+	}
+	&::-ms-track {
+		width: 100%;
+		height: 8.4px;
+		cursor: pointer;
+		background: transparent; 
+		border-color: transparent;
+		border-width: 16px 0;
+		color: transparent;
+	}
+	&::-webkit-slider-runnable-track {
+		width: 100%;
+		height: 6px;
+		cursor: pointer;
+		background: $dark-5;
+		border-radius: 1.3px;
+	}
+  &::-ms-fill-lower {
+		background: $dark-5;
+		border-radius: 2.6px;
+	}
+}
+
+.currency-to-container {
+	position: relative;
+	&::before {
+		content: "Get:";
+		position: absolute;
+		font-size: 12px;
+		font-weight: 400;
+		top: 10px;
+		left: 20px;
+	}
+	img {
+		position: absolute;
+		top: calc(50% + 5px);
+		transform: translateY(-50%);
+		left: 20px;
+	}
+}
+.currency-from-container {
+	position: relative;
+	img {
+		width: 24px;
+		height: 24px;
+		border-radius: 4px;
+	}
+	&::before {
+		content: "Pay:";
+		position: absolute;
+		font-size: 12px;
+		font-weight: 400;
+		top: 10px;
+		left: 20px;
+	}
+}
+
+.information {
+	display: none;
+	position: absolute;
+	bottom: 0;
+	box-sizing: border-box;
+	border-radius: 10px;
+  padding: 15px 20px 0;
+	height: 224px;
+	width: 100%;
+	background-color: $dark-2;
+	h1 {
+		color: $white-1;
+		font-size: 18px;
+		font-weight: 700;
+		margin-bottom: 20px;
+	}
+}
+
+.info-input {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 5px;
+	align-self: stretch;
+	label {
+		color: $white-1;
+		font-size: 16px;
+		font-weight: 400;
+		text-transform: uppercase;
+	}
+}
+
+.close {
+	cursor: pointer; 
+	position: absolute; 
+	top: 24px; 
+	right: 44px;
+	&:before, &:after {
+		content: ""; 
+		position: absolute; 
+		width: 24px; 
+		height: 2px; 
+		background: $white-2;
+	}
+	&::before {
+		transform: rotate(45deg);
+	}
+	&::after {
+		transform: rotate(-45deg);
+	}
+}
+
+.dd-selected {
+	padding: 3px !important;
+}
