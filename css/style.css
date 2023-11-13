@@ -176,9 +176,8 @@ h1, h2 {
   -webkit-appearance: none;
   margin: 18px 0;
   width: calc(100% - 40px);
-  background: #2B3545;
 }
-#currency-slider::-webkit-slider-thumb {
+#currency-slider:disabled::-webkit-slider-thumb {
   -webkit-appearance: none;
   height: 16px;
   width: 16px;
@@ -187,11 +186,34 @@ h1, h2 {
   cursor: pointer;
   margin-top: -5px;
 }
-#currency-slider:focus {
-  outline: none;
+#currency-slider:disabled::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
 }
-#currency-slider:focus::-webkit-slider-runnable-track {
+#currency-slider:disabled::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
   background: #414D60;
+  border-radius: 1.3px;
+}
+#currency-slider:disabled::-ms-fill-lower {
+  background: #414D60;
+  border-radius: 2.6px;
+}
+#currency-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #46CA43;
+  cursor: pointer;
+  margin-top: -5px;
 }
 #currency-slider::-ms-track {
   width: 100%;
@@ -206,12 +228,18 @@ h1, h2 {
   width: 100%;
   height: 6px;
   cursor: pointer;
-  background: #414D60;
+  background: #46CA43;
   border-radius: 1.3px;
 }
 #currency-slider::-ms-fill-lower {
-  background: #414D60;
+  background: #46CA43;
   border-radius: 2.6px;
+}
+#currency-slider:focus {
+  outline: none;
+}
+#currency-slider:focus::-webkit-slider-runnable-track {
+  background: #414D60;
 }
 
 .currency-to-container {
@@ -314,6 +342,36 @@ h1, h2 {
           transform: rotate(-45deg);
 }
 
-.dd-selected {
-  padding: 3px !important;
+.dd-select {
+  border: none !important;
+}
+
+.currency-from-container .dd-selected {
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 5px 0 0 5px;
+}
+.currency-from-container .dd-select {
+  background-color: transparent !important;
+}
+.currency-from-container .dd-container {
+  pointer-events: none;
+}
+.currency-from-container .dd-pointer {
+  display: none;
+}
+
+.active-section-select .dd-select {
+  background-color: #F6F6F6 !important;
+}
+.active-section-select .dd-container {
+  pointer-events: initial;
+}
+.active-section-select .dd-pointer {
+  display: block;
 }
