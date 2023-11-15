@@ -38,10 +38,14 @@ let gameRateValue = 10;
 const fractions = ["Alliance", "Horder"];
 
 const gamesField = ".games .games-field";
+// Поле валюты
 const currencyFromInput = $("#currency-from-input");
+// Поле игровой валюты
 const currencyToInput = $("#currency-to-input");
 const currencySlider = $("#currency-slider");
+// Поле выбора сервера
 const server = $("#server");
+// Кнопка продолжить
 const button = $("footer button");
 
 function checkCurrencyField(min, max, func, obj) {
@@ -58,14 +62,14 @@ function checkCurrencyField(min, max, func, obj) {
 		alert(`Диапазон количества валюты должен быть от ${min} и до ${max}.`);
 	}
 }
-
+// Вычислить значение поля ввода валюты и слайдера
 function countFromInputValue() {
 	currencyFromInput.val(
 		(((gameRateValue / 100) * currencyToInput.val()) / rateValue).toFixed(2)
 	);
 	currencySlider.val(currencyToInput.val());
 }
-
+// Вычислить значение поля ввода игровой валюты и слайдера
 function countToInputValue() {
 	let input = currencyToInput.val(
 		gameRateValue * currencyFromInput.val() * rateValue
@@ -77,7 +81,7 @@ function rateCurrency(data) {
 	if (data.text === "EU" || data.text === "DE") {
 		gameRateValue = data.rate;
 		countFromInputValue();
-
+		// Активировать поле ввода сервера
 		server.removeAttr("disabled");
 		server.focus().css({
 			color: "#C0C3C9",
@@ -116,6 +120,8 @@ $(document).ready(function () {
 	$(".games-field select").css({
 		"background-color": "#2B3545",
 	});
+
+	$(".currency-to-container .dd-selected").focus();
 
 	currencyToInput
 		.on("change currency from input value", function () {
@@ -163,9 +169,11 @@ $(document).ready(function () {
 	});
 	currencyFromInput
 		.on("change currency from input value", function () {
+			// Задаем мин и макс значения для валидации поля
 			checkCurrencyField(10, 1000, countToInputValue, this);
 		})
 		.focus(function () {
+			// Если секция по выбору валюты неактивна - активировать
 			if (
 				$(".currency-from-container .dd-container").css("pointer-events") ===
 				"none"
@@ -188,6 +196,7 @@ $(document).ready(function () {
 			$(gamesField + ":first-child img").css("display", "block");
 		})
 		.change(function () {
+			// Заблокировать все поля
 			$(
 				"#server, #faction, #currency-from-input, #currency-slider, #currency-to-input"
 			).each((index, el) => {
@@ -210,11 +219,13 @@ $(document).ready(function () {
 			$(gamesField + ":nth-child(2) img").css("display", "none");
 			$(gamesField + ":last-child img").css("display", "none");
 		});
+
 	$("#information-close").click(function () {
 		$("#information").css("display", "none").removeClass("info-active");
 		$("input, select").removeAttr("disabled");
 		button.text("continue");
 	});
+
 	$(".info-input input").keydown(function (e) {
 		if (!e.key.match(/[a-zA-Z]/)) return e.preventDefault();
 	});
