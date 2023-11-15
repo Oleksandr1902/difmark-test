@@ -240,9 +240,6 @@ h1, h2 {
 #currency-slider:focus {
   outline: none;
 }
-#currency-slider:focus::-webkit-slider-runnable-track {
-  background: #414D60;
-}
 
 .currency-to-container {
   position: relative;
@@ -389,6 +386,9 @@ h1, h2 {
   padding: 5px 0 0 5px;
   background-color: #354051;
 }
+.currency-from-container .dd-selected:focus {
+  outline: none;
+}
 .currency-from-container .dd-container {
   pointer-events: none;
 }
@@ -405,12 +405,6 @@ h1, h2 {
   line-height: 44px !important;
 }
 
-.active-section-select .dd-select {
-  background-color: #F6F6F6 !important;
-}
 .active-section-select .dd-container {
   pointer-events: initial;
-}
-.active-section-select .dd-pointer {
-  display: block;
 }

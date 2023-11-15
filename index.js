@@ -63,9 +63,10 @@ function countFromInputValue() {
 	currencyFromInput.val(
 		(((gameRateValue / 100) * currencyToInput.val()) / rateValue).toFixed(2)
 	);
+	currencySlider.val(currencyToInput.val());
 }
 
-function countToInputAndSliderValues() {
+function countToInputValue() {
 	let input = currencyToInput.val(
 		gameRateValue * currencyFromInput.val() * rateValue
 	);
@@ -162,7 +163,7 @@ $(document).ready(function () {
 	});
 	currencyFromInput
 		.on("change currency from input value", function () {
-			checkCurrencyField(10, 1000, countToInputAndSliderValues, this);
+			checkCurrencyField(10, 1000, countToInputValue, this);
 		})
 		.focus(function () {
 			if (

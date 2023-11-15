@@ -211,11 +211,7 @@ h1, h2 {
 	
 	&:focus {
 		outline: none;
-		&::-webkit-slider-runnable-track {
-			background: $dark-5;
-		}
 	}
-	
 }
 
 .currency-to-container {
@@ -336,9 +332,14 @@ h1, h2 {
 		justify-content: end;
 		padding: 5px 0 0 5px;
 		background-color: $dark-1;
+		&:focus {
+			outline: none;
+		}
 	}
 	
 	.dd-container {	
+		
+		
 		pointer-events: none;
 	}
 	
@@ -353,14 +354,8 @@ h1, h2 {
 }
 
 .active-section-select {
-	.dd-select {
-		background-color: $white-2 !important;
-	}
 	.dd-container {	
 		pointer-events: initial;
-	}
-	.dd-pointer {
-		display: block;
 	}
 }
 
