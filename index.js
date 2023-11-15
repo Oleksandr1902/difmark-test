@@ -37,10 +37,27 @@ let gameRateValue = 10;
 
 const fractions = ["Alliance", "Horder"];
 
+const gamesField = ".games .games-field";
 const currencyFromInput = $("#currency-from-input");
 const currencyToInput = $("#currency-to-input");
 const currencySlider = $("#currency-slider");
 const server = $("#server");
+const button = $("footer button");
+
+function checkCurrencyField(min, max, func, obj) {
+	let value = obj.value;
+	if (value >= min && value <= max) {
+		func();
+	} else {
+		if (value < min) {
+			obj.value = min;
+		}
+		if (value > max) {
+			obj.value = max;
+		}
+		alert(`Диапазон количества валюты должен быть от ${min} и до ${max}.`);
+	}
+}
 
 function countFromInputValue() {
 	currencyFromInput.val(
@@ -55,32 +72,16 @@ function countToInputAndSliderValues() {
 	currencySlider.val(input.val());
 }
 
-// function changeToInput() {
-// 	currencyToInput.val()
-// 	return currencyToInput.val();
-// }
-
-// function changeSlider() {
-// 	currencySlider.val(changeToInput());
-// }
-
-// const callbacks = $.Callbacks();
-// callbacks.add(changeToInput);
-// callbacks.add(changeSlider);
-// callbacks.add(countFromInputValue);
-
 function rateCurrency(data) {
 	if (data.text === "EU" || data.text === "DE") {
 		gameRateValue = data.rate;
 		countFromInputValue();
 
-		if (server.css("pointer-events") === "none") {
-			server.focus().css({
-				color: "#C0C3C9",
-				"background-color": "#354051",
-				"pointer-events": "initial",
-			});
-		}
+		server.removeAttr("disabled");
+		server.focus().css({
+			color: "#C0C3C9",
+			"background-color": "#354051",
+		});
 	}
 	if (data.text === "EUR" || data.text === "USD") {
 		rateValue = data.rate;
@@ -88,115 +89,36 @@ function rateCurrency(data) {
 	}
 }
 
-$("#demoDefaultSelection").ddslick({
-	data: currencyData,
-	width: 95,
-	onSelected: function (data) {
-		rateCurrency(data.selectedData);
-	},
-});
-
 $("#demoDefaultSelection2").ddslick({
 	data: gameCurrencyData,
 	width: 95,
+	imagePosition: "left",
 	onSelected: function (data) {
 		rateCurrency(data.selectedData);
 	},
 	showSelectedHTML: false,
 });
 
+$("#demoDefaultSelection").ddslick({
+	data: currencyData,
+	width: 95,
+	imagePosition: "left",
+	onSelected: function (data) {
+		rateCurrency(data.selectedData);
+	},
+});
+
 $(document).ready(function () {
+	// Отметить первое поле выполненным
+	$(gamesField + ":first-child img").css("display", "block");
+	// Остальные поля делаем неактивными
 	$(".games-field select").css({
 		"background-color": "#2B3545",
-		"pointer-events": "none",
 	});
-	$(".currency-from-container .dd-select").attr(
-		"style",
-		"background-color : #2B3545"
-	);
-
-	currencyFromInput
-		.on("change currency from input value", function () {
-			// .on("change numbers in input", function () {
-			// 	if (this.value.match(/[^0-9]|^0{1}/g)) {
-			// 		this.value = this.value.replace(/^0+/, "");
-			// 	}
-			// })
-			// .on("keydown", function (event) {
-			// 	// Разрешаем: backspace, delete, tab и escape
-			// 	if (
-			// 		event.keyCode == 46 ||
-			// 		event.keyCode == 8 ||
-			// 		event.keyCode == 9 ||
-			// 		event.keyCode == 27 ||
-			// 		// Разрешаем: Ctrl+A
-			// 		(event.keyCode == 65 && event.ctrlKey === true) ||
-			// 		// Разрешаем: home, end, влево, вправо
-			// 		(event.keyCode >= 35 && event.keyCode <= 39)
-			// 	) {
-			// 		// Ничего не делаем
-			// 		return;
-			// 	} else {
-			// 		// Запрещаем все, кроме цифр на основной клавиатуре, а так же Num-клавиатуре
-			// 		if (
-			// 			(event.keyCode < 48 || event.keyCode > 57) &&
-			// 			(event.keyCode < 96 || event.keyCode > 105)
-			// 		) {
-			// 			event.preventDefault();
-			// 		}
-			// 	}
-
-			countToInputAndSliderValues();
-		})
-		.focus(function () {
-			if (
-				$(".currency-from-container .dd-container").css("pointer-events") ===
-				"none"
-			) {
-				$(".currency-from-container .dd-container").css(
-					"pointer-events",
-					"initial"
-				);
-				$(".currency-from-container .dd-select").css(
-					"background-color",
-					"initial"
-				);
-				$(".currency-from-container .dd-container").css("display", "initial");
-			}
-		});
 
 	currencyToInput
-		// .on("change numbers in input", function () {
-		// 	if (this.value.match(/[^0-9]|^0{1}/g)) {
-		// 		this.value = this.value.replace(/^0+/, "");
-		// 	}
-		// })
-		// .on("keydown", function (event) {
-		// 	// Разрешаем: backspace, delete, tab и escape
-		// 	if (
-		// 		event.keyCode == 46 ||
-		// 		event.keyCode == 8 ||
-		// 		event.keyCode == 9 ||
-		// 		event.keyCode == 27 ||
-		// 		// Разрешаем: Ctrl+A
-		// 		(event.keyCode == 65 && event.ctrlKey === true) ||
-		// 		// Разрешаем: home, end, влево, вправо
-		// 		(event.keyCode >= 35 && event.keyCode <= 39)
-		// 	) {
-		// 		// Ничего не делаем
-		// 		return;
-		// 	} else {
-		// 		// Запрещаем все, кроме цифр на основной клавиатуре, а так же Num-клавиатуре
-		// 		if (
-		// 			(event.keyCode < 48 || event.keyCode > 57) &&
-		// 			(event.keyCode < 96 || event.keyCode > 105)
-		// 		) {
-		// 			event.preventDefault();
-		// 		}
-		// 	}
-		// })
 		.on("change currency from input value", function () {
-			countFromInputValue();
+			checkCurrencyField(100, 10000, countFromInputValue, this);
 		})
 		.focusout(function () {
 			// Добавляем стили для активного поля ввода валюты
@@ -212,25 +134,87 @@ $(document).ready(function () {
 		countFromInputValue();
 	});
 	$("#server").change(function () {
+		// Отмечаем что поле готово
+
+		$(gamesField + ":nth-child(2) img").css("display", "block");
 		$("#faction")
+			.removeAttr("disabled")
 			.focus()
 			.css({
 				color: "#C0C3C9",
 				"background-color": "#354051",
-				"pointer-events": "initial",
 			})
 			.change(function () {
+				// Отмечаем что поле готово
+				$(gamesField + ":last-child img").css("display", "block");
+
+				// Показываем что поле активно
 				$(".currency-to-container img").attr(
 					"src",
 					"assets/images/game-icons_two-coins-active.svg"
 				);
-				// Добавляем стили для активного поля ввода игровой валюты и слайдера
-				currencyToInput
-					.css({ color: "#F6F6F6", "pointer-events": "initial" })
-					.removeAttr("disabled");
+				// Добавляем стили для поля ввода игровой валюты и слайдера
+				currencyToInput.css({ color: "#F6F6F6" }).removeAttr("disabled");
 				currencySlider.removeAttr("disabled");
 				// Фокус на input для ввода игровой валюты
 				currencyToInput.focus();
 			});
+	});
+	currencyFromInput
+		.on("change currency from input value", function () {
+			checkCurrencyField(10, 1000, countToInputAndSliderValues, this);
+		})
+		.focus(function () {
+			if (
+				$(".currency-from-container .dd-container").css("pointer-events") ===
+				"none"
+			) {
+				$(".currency-from-container").addClass("active-section-select");
+				button.removeAttr("disabled").css("background-color", "#46CA43");
+			}
+		});
+	button.click(function () {
+		button.text("buy currency");
+		$("#information").css("display", "block").addClass("info-active");
+		$("input:not(.info-input input), select").attr("disabled", true);
+	});
+	// Когда производим ввод в первое поле (выбираем игру) начинаем выбор сначала
+	$(gamesField + ":first-child input")
+		.focus(function () {
+			$(gamesField + ":first-child img").css("display", "none");
+		})
+		.focusout(function () {
+			$(gamesField + ":first-child img").css("display", "block");
+		})
+		.change(function () {
+			$(
+				"#server, #faction, #currency-from-input, #currency-slider, #currency-to-input"
+			).each((index, el) => {
+				console.log(el);
+				if (!el.hasAttribute("disabled")) {
+					el.setAttribute("disabled", true);
+				}
+			});
+			$(".currency-to-container img").attr(
+				"src",
+				"assets/images/game-icons_two-coins.svg"
+			);
+			// Дефолтные цвета валютных полей
+			currencyToInput.css("color", "#9BA1AB");
+			currencyFromInput.css("color", "#9BA1AB");
+			// Сбрасываем данные
+			$(currencyToInput + ":first").attr("selected", "true");
+			$(currencyFromInput + ":first").attr("selected", "true");
+			$("#my_select :first").attr("selected", "true");
+			$(gamesField + ":nth-child(2) img").css("display", "none");
+			$(gamesField + ":last-child img").css("display", "none");
+		});
+	$("#information-close").click(function () {
+		$("#information").css("display", "none").removeClass("info-active");
+		$("input, select").removeAttr("disabled");
+		button.text("continue");
+	});
+	$(".info-input input").keydown(function (e) {
+		if (!e.key.match(/[a-zA-Z]/)) return e.preventDefault();
 	});
 });

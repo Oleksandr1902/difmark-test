@@ -25,7 +25,7 @@
 					</div>
 					<div class="games-field">
 						<div class="games-select">
-							<select id="server" class="card-field">
+							<select id="server" class="card-field" disabled>
 								<option disabled selected>Server</option>
 								<option value="Europe x3">Europe x3</option>
 							</select>
@@ -40,7 +40,7 @@
 
 					<div class="games-field">
 						<div class="games-select">
-							<select id="faction" class="card-field">
+							<select id="faction" class="card-field" disabled>
 								<option disabled selected>Faction</option>
 								<option value="Horde">Horde</option>
 							</select>
@@ -62,6 +62,7 @@
 							value="100"
 							step="0,1"
 							type="number"
+							disabled
 						/><img src="assets/images/game-icons_two-coins.svg" />
 						<div style="position: absolute; right: 20px; bottom: 10px">
 							<div id="demoDefaultSelection2"></div>
@@ -74,6 +75,7 @@
 						max="10000"
 						step="1"
 						value="100"
+						disabled
 					/>
 					<div class="currency-from-container">
 						<input
@@ -81,6 +83,7 @@
 							class="currency-input card-field"
 							type="number"
 							value="10"
+							disabled
 						/>
 						<div style="position: absolute; right: 20px; bottom: 10px">
 							<div id="demoDefaultSelection"></div>
@@ -88,9 +91,9 @@
 					</div>
 				</form>
 			</div>
-			<div class="information">
+			<div id="information">
 				<h1>Information</h1>
-				<div class="close"><div></div></div>
+				<div id="information-close"><div></div></div>
 				<div class="info-input">
 					<label>character name:</label
 					><input
@@ -107,7 +110,7 @@
 			integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
 			crossorigin="anonymous"
 		></script>
-		<script src="jquery.ddslick.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/ddslick@1.0.3/dist/jquery.ddslick.min.js"></script>
 		<script src="index.js"></script>
 	</body>
 </html>
